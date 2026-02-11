@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Barber Independencia - Tu barbería en Monclova. Agenda tu cita ahora.">
+    <title>⚡ Barber Independencia</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --color-primary: #003087;
+            --color-secondary: #0047AB;
+            --color-accent: #00BFFF;
+            --color-dark: #000814;
+            --color-darker: #000000;
+            --color-light: #E0F4FF;
+            --color-white: #ffffff;
+            --color-gray: #8B9DC3;
+            --neon-blue: #00BFFF;
+            --neon-cyan: #00FFFF;
+            --font-tech: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-darker);
+            color: var(--color-white);
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* ==================== CYBER GRID ==================== */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(90deg, rgba(0, 48, 135, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 48, 135, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ==================== TOP HEADER (MINIMAL) ==================== */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 8, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--color-primary);
+            z-index: 999;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* ==================== BOTTOM NAV ==================== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 8, 20, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 2px solid var(--color-primary);
+            box-shadow: 0 -5px 30px rgba(0, 191, 255, 0.3);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--color-gray);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item.active {
+            color: var(--neon-blue);
+        }
+
+        .nav-item i {
+            font-size: 1.5rem;
+        }
+
+        .nav-item span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* ==================== SECTIONS ==================== */
+        .section {
+            min-height: 100vh;
+            padding: 5rem 1rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 6rem 1.5rem 3rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.2) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
+            border: 2px solid var(--neon-blue);
+            border-radius: 50px;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ==================== SERVICES ==================== */
+        .services-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 48, 135, 0.2), rgba(0, 71, 171, 0.1));
+            border: 2px solid var(--color-primary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:active {
+            transform: scale(0.98);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .service-info {
+            flex: 1;
+        }
+
+        .service-info h3 {
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            color: var(--neon-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .service-info p {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-price {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* ==================== GALLERY ==================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 15px;
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item i {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 191, 255, 0.9);
+            padding: 0.5rem;
+            text-align: center;
+            font-family: var(--font-tech);
+            font-size: 0.8rem;
+            color: var(--color-darker);
+            font-weight: 700;
+        }
+
+        /* ==================== TEAM ==================== */
+        .team-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(0, 48, 135, 0.2), rgba(0, 71, 171, 0.1));
+            border: 2px solid var(--color-primary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--neon-blue);
+            flex-shrink: 0;
+        }
+
+        .team-avatar i {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .team-info h3 {
+            font-family: var(--font-tech);
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-specialty {
+            color: var(--neon-cyan);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-info p {
+            color: var(--color-gray);
+            font-size: 0.85rem;
+        }
+
+        /* ==================== LOCATION (MEJORADA) ==================== */
+        .location-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(0, 48, 135, 0.2), rgba(0, 71, 171, 0.1));
+            border: 2px solid var(--color-primary);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .info-card h3 {
+            font-family: var(--font-tech);
+            color: var(--neon-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .schedule-table tr {
+            border-bottom: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        .schedule-table td {
+            padding: 0.8rem 0;
+            font-size: 1rem;
+        }
+
+        .schedule-table td:first-child {
+            color: var(--neon-cyan);
+            font-weight: 600;
+        }
+
+        .schedule-table td:last-child {
+            color: var(--color-gray);
+            text-align: right;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 1rem;
+            background: rgba(0, 48, 135, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 2px solid var(--neon-blue);
+        }
+
+        .contact-icon i {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-value {
+            color: var(--color-white);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .map-card {
+            background: linear-gradient(135deg, rgba(0, 48, 135, 0.2), rgba(0, 71, 171, 0.1));
+            border: 2px solid var(--color-primary);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.2);
+        }
+
+        .map-header {
+            padding: 1rem;
+            background: rgba(0, 8, 20, 0.5);
+            border-bottom: 2px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .map-header h3 {
+            font-family: var(--font-tech);
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+        }
+
+        .map-container {
+            height: 350px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: hue-rotate(180deg) invert(90%);
+        }
+
+        .open-maps-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border: none;
+            color: var(--color-white);
+            font-family: var(--font-tech);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .open-maps-btn:active {
+            background: var(--neon-blue);
+            color: var(--color-darker);
+        }
+
+        /* ==================== CONTACT ==================== */
+        .social-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .social-card {
+            background: linear-gradient(135deg, rgba(0, 48, 135, 0.2), rgba(0, 71, 171, 0.1));
+            border: 2px solid var(--color-primary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .social-card:active {
+            transform: scale(0.98);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .social-icon.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+        }
+
+        .social-icon.facebook {
+            background: linear-gradient(135deg, #1877f2, #0e4da4);
+        }
+
+        .social-icon.tiktok {
+            background: linear-gradient(135deg, #000000, #333333);
+        }
+
+        .social-info h3 {
+            font-family: var(--font-tech);
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .social-info p {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: rgba(0, 8, 20, 0.95);
+            border-top: 2px solid var(--color-primary);
+            padding: 2rem 1rem 1rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-text {
+            color: var(--color-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 191, 255, 0.2);
+            color: var(--color-gray);
+            font-size: 0.8rem;
+        }
+
+        /* ==================== DEVELOPER MODE ==================== */
+        .dev-trigger {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 998;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+        }
+
+        .dev-trigger i {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+        }
+
+        .dev-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 8, 20, 0.98);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+        }
+
+        .dev-panel.active {
+            right: 0;
+        }
+
+        .dev-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--neon-blue);
+        }
+
+        .dev-header h2 {
+            font-family: var(--font-tech);
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+        }
+
+        .dev-close {
+            background: none;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .dev-section {
+            margin-bottom: 2rem;
+        }
+
+        .dev-section h3 {
+            font-family: var(--font-tech);
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .dev-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 48, 135, 0.2);
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .dev-input:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+        }
+
+        .dev-save {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border: 2px solid var(--neon-blue);
+            border-radius: 50px;
+            color: var(--color-white);
+            font-family: var(--font-tech);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ==================== HIDDEN SECTIONS ==================== */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cyber-grid"></div>
+
+    <!-- TOP HEADER -->
+    <div class="top-header">
+        <div class="logo">⚡ BARBER INDEPENDENCIA</div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="section active" id="inicio">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>⚡ BARBER<br>INDEPENDENCIA</h1>
+                <p class="hero-subtitle">🔥 Tu estilo, nuestra pasión<br>Monclova, Coahuila 🔥</p>
+                <a href="#contacto" class="cta-btn" onclick="showSection('contacto')">📅 AGENDAR CITA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" id="servicios">
+        <h2 class="section-title">💈 SERVICIOS</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <div class="service-info">
+                    <h3>CORTE CLÁSICO</h3>
+                    <p>Corte tradicional con técnicas modernas</p>
+                    <div class="service-price">$150</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔥</div>
+                <div class="service-info">
+                    <h3>CORTE MODERNO</h3>
+                    <p>Fade, undercut, pompadour</p>
+                    <div class="service-price">$200</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🧔</div>
+                <div class="service-info">
+                    <h3>ARREGLO DE BARBA</h3>
+                    <p>Perfilado y diseño profesional</p>
+                    <div class="service-price">$120</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💈</div>
+                <div class="service-info">
+                    <h3>AFEITADO CLÁSICO</h3>
+                    <p>Navaja y toallas calientes</p>
+                    <div class="service-price">$180</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <div class="service-info">
+                    <h3>TRATAMIENTO</h3>
+                    <p>Hidratación y cuidado premium</p>
+                    <div class="service-price">$250</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <div class="service-info">
+                    <h3>COLORACIÓN</h3>
+                    <p>Tintes y mechas profesionales</p>
+                    <div class="service-price">$300</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section" id="galeria">
+        <h2 class="section-title">📸 GALERÍA</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <i class="fas fa-cut"></i>
+                <div class="gallery-label">FADE PRO</div>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-user-tie"></i>
+                <div class="gallery-label">BARBA</div>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-scissors"></i>
+                <div class="gallery-label">CLÁSICO</div>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-spray-can"></i>
+                <div class="gallery-label">UNDERCUT</div>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-spa"></i>
+                <div class="gallery-label">AFEITADO</div>
+            </div>
+            <div class="gallery-item">
+                <i class="fas fa-crown"></i>
+                <div class="gallery-label">EJECUTIVO</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="section" id="equipo">
+        <h2 class="section-title">👥 EQUIPO</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="team-info">
+                    <h3>Carlos Mendoza</h3>
+                    <p class="team-specialty">🏆 Master Barber</p>
+                    <p>15 años de experiencia</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="team-info">
+                    <h3>Miguel Ángel Torres</h3>
+                    <p class="team-specialty">⚡ Estilista Senior</p>
+                    <p>Experto en tendencias modernas</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="team-info">
+                    <h3>Roberto Sánchez</h3>
+                    <p class="team-specialty">🔥 Barbero Pro</p>
+                    <p>Especialista en barba</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION (MEJORADA) -->
+    <section class="section" id="ubicacion">
+        <h2 class="section-title">📍 UBICACIÓN</h2>
+        <div class="location-container">
+            <div class="info-card">
+                <h3><i class="fas fa-clock"></i> Horarios</h3>
+                <table class="schedule-table">
+                    <tr>
+                        <td>Lunes - Viernes</td>
+                        <td>9:00 - 20:00</td>
+                    </tr>
+                    <tr>
+                        <td>Sábado</td>
+                        <td>9:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td>Domingo</td>
+                        <td>10:00 - 16:00</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle"></i> Contacto</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">Dirección</div>
+                        <div class="contact-value" id="displayAddress">Av. Independencia #456, Centro, Monclova</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">Teléfono</div>
+                        <div class="contact-value" id="displayPhone">(866) 123-4567</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value" id="displayEmail">contacto@barberindependencia.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-header">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>🗺️ Encuéntranos</h3>
+                </div>
+                <div class="map-container">
+                    <iframe id="mapFrame"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28626.36!2d-101.42!3d26.90!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868890d0d0d0d0d0%3A0x0!2sMonclova%2C%20Coahuila!5e0!3m2!1ses!2smx!4v1234567890"
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+                <button class="open-maps-btn" id="openMapsBtn">
+                    <i class="fas fa-directions"></i> ABRIR EN GOOGLE MAPS
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contacto">
+        <h2 class="section-title">📱 CONTACTO</h2>
+        <div class="social-grid">
+            <a href="#" class="social-card" id="whatsappLink">
+                <div class="social-icon whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="social-info">
+                    <h3>WhatsApp</h3>
+                    <p id="displayWhatsapp">+52 866 123 4567</p>
+                </div>
+            </a>
+
+            <a href="#" class="social-card" id="instagramLink" target="_blank">
+                <div class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="social-info">
+                    <h3>Instagram</h3>
+                    <p id="displayInstagram">@barberindependencia</p>
+                </div>
+            </a>
+
+            <a href="#" class="social-card" id="facebookLink" target="_blank">
+                <div class="social-icon facebook">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="social-info">
+                    <h3>Facebook</h3>
+                    <p id="displayFacebook">/barberindependencia</p>
+                </div>
+            </a>
+
+            <a href="#" class="social-card" id="tiktokLink" target="_blank">
+                <div class="social-icon tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="social-info">
+                    <h3>TikTok</h3>
+                    <p id="displayTiktok">@barberindependencia</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">⚡ BARBER INDEPENDENCIA</div>
+        <p class="footer-text">Tu barbería de confianza en Monclova 🔥</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Barber Independencia | Hecho con 💙</p>
+        </div>
+    </footer>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <a href="#inicio" class="nav-item active" data-section="inicio">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="#servicios" class="nav-item" data-section="servicios">
+            <i class="fas fa-cut"></i>
+            <span>Servicios</span>
+        </a>
+        <a href="#galeria" class="nav-item" data-section="galeria">
+            <i class="fas fa-images"></i>
+            <span>Galería</span>
+        </a>
+        <a href="#ubicacion" class="nav-item" data-section="ubicacion">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Ubicación</span>
+        </a>
+        <a href="#contacto" class="nav-item" data-section="contacto">
+            <i class="fas fa-phone"></i>
+            <span>Contacto</span>
+        </a>
+    </nav>
+
+    <!-- DEVELOPER MODE -->
+    <div class="dev-trigger" id="devTrigger">
+        <i class="fas fa-cog"></i>
+    </div>
+
+    <div class="dev-panel" id="devPanel">
+        <div class="dev-header">
+            <h2>⚙️ MODO DEV</h2>
+            <button class="dev-close" id="devClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="dev-section">
+            <h3>📍 Ubicación</h3>
+            <input type="text" class="dev-input" id="devAddress" placeholder="Dirección completa">
+            <input type="text" class="dev-input" id="devPhone" placeholder="Teléfono">
+            <input type="email" class="dev-input" id="devEmail" placeholder="Email">
+            <input type="text" class="dev-input" id="devMapUrl" placeholder="URL del mapa de Google">
+        </div>
+
+        <div class="dev-section">
+            <h3>📱 Redes Sociales</h3>
+            <input type="text" class="dev-input" id="devWhatsapp" placeholder="WhatsApp">
+            <input type="text" class="dev-input" id="devInstagram" placeholder="Instagram">
+            <input type="text" class="dev-input" id="devFacebook" placeholder="Facebook">
+            <input type="text" class="dev-input" id="devTiktok" placeholder="TikTok">
+        </div>
+
+        <button class="dev-save" id="devSave">💾 GUARDAR</button>
+    </div>
+
+    <script>
+        // ==================== NAVIGATION ====================
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+
+        function showSection(sectionId) {
+            sections.forEach(s => s.classList.remove('active'));
+            navItems.forEach(n => n.classList.remove('active'));
+
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = item.getAttribute('data-section');
+                showSection(section);
+            });
+        });
+
+        // ==================== DEVELOPER MODE ====================
+        const devTrigger = document.getElementById('devTrigger');
+        const devPanel = document.getElementById('devPanel');
+        const devClose = document.getElementById('devClose');
+        const devSave = document.getElementById('devSave');
+
+        let clickCount = 0;
+        let clickTimer = null;
+
+        devTrigger.addEventListener('click', () => {
+            clickCount++;
+            if (clickTimer) clearTimeout(clickTimer);
+
+            if (clickCount >= 5) {
+                devPanel.classList.add('active');
+                clickCount = 0;
+                loadDevData();
+            }
+
+            clickTimer = setTimeout(() => clickCount = 0, 2000);
+        });
+
+        devClose.addEventListener('click', () => {
+            devPanel.classList.remove('active');
+        });
+
+        // ==================== LOCAL STORAGE ====================
+        const defaultData = {
+            address: 'Av. Independencia #456, Centro, Monclova',
+            phone: '(866) 123-4567',
+            email: 'contacto@barberindependencia.com',
+            mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28626.36!2d-101.42!3d26.90!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868890d0d0d0d0d0%3A0x0!2sMonclova%2C%20Coahuila!5e0!3m2!1ses!2smx!4v1234567890',
+            whatsapp: '+52 866 123 4567',
+            instagram: '@barberindependencia',
+            facebook: '/barberindependencia',
+            tiktok: '@barberindependencia'
+        };
+
+        function loadDevData() {
+            const data = JSON.parse(localStorage.getItem('barberData')) || defaultData;
+            document.getElementById('devAddress').value = data.address;
+            document.getElementById('devPhone').value = data.phone;
+            document.getElementById('devEmail').value = data.email;
+            document.getElementById('devMapUrl').value = data.mapUrl;
+            document.getElementById('devWhatsapp').value = data.whatsapp;
+            document.getElementById('devInstagram').value = data.instagram;
+            document.getElementById('devFacebook').value = data.facebook;
+            document.getElementById('devTiktok').value = data.tiktok;
+        }
+
+        function saveDevData() {
+            const data = {
+                address: document.getElementById('devAddress').value,
+                phone: document.getElementById('devPhone').value,
+                email: document.getElementById('devEmail').value,
+                mapUrl: document.getElementById('devMapUrl').value,
+                whatsapp: document.getElementById('devWhatsapp').value,
+                instagram: document.getElementById('devInstagram').value,
+                facebook: document.getElementById('devFacebook').value,
+                tiktok: document.getElementById('devTiktok').value
+            };
+
+            localStorage.setItem('barberData', JSON.stringify(data));
+            updateDisplay();
+
+            devSave.textContent = '✅ GUARDADO!';
+            setTimeout(() => {
+                devSave.textContent = '💾 GUARDAR';
+                devPanel.classList.remove('active');
+            }, 1500);
+        }
+
+        function updateDisplay() {
+            const data = JSON.parse(localStorage.getItem('barberData')) || defaultData;
+
+            document.getElementById('displayAddress').textContent = data.address;
+            document.getElementById('displayPhone').textContent = data.phone;
+            document.getElementById('displayEmail').textContent = data.email;
+            document.getElementById('displayWhatsapp').textContent = data.whatsapp;
+            document.getElementById('displayInstagram').textContent = data.instagram;
+            document.getElementById('displayFacebook').textContent = data.facebook;
+            document.getElementById('displayTiktok').textContent = data.tiktok;
+
+            const whatsappNumber = data.whatsapp.replace(/\D/g, '');
+            document.getElementById('whatsappLink').href = `https://wa.me/${whatsappNumber}`;
+
+            const instagramHandle = data.instagram.replace('@', '');
+            document.getElementById('instagramLink').href = `https://instagram.com/${instagramHandle}`;
+
+            const facebookHandle = data.facebook.replace('/', '');
+            document.getElementById('facebookLink').href = `https://facebook.com/${facebookHandle}`;
+
+            const tiktokHandle = data.tiktok.replace('@', '');
+            document.getElementById('tiktokLink').href = `https://tiktok.com/@${tiktokHandle}`;
+
+            document.getElementById('mapFrame').src = data.mapUrl;
+        }
+
+        devSave.addEventListener('click', saveDevData);
+
+        // ==================== OPEN MAPS ====================
+        document.getElementById('openMapsBtn').addEventListener('click', () => {
+            const data = JSON.parse(localStorage.getItem('barberData')) || defaultData;
+            const address = encodeURIComponent(data.address);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+        });
+
+        // ==================== INIT ====================
+        window.addEventListener('load', updateDisplay);
+    </script>
+</body>
+
+</html>
